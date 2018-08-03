@@ -76,8 +76,8 @@
         border-right: 100px solid transparent;
     }
 
-    .flex-2-col .pad h2 {
-        color: #dcdcdc;
+    div.active h2 {
+        color: gainsboro;
         letter-spacing: 5px;
     }
 
