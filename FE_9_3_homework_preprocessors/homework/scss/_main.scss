@@ -40,14 +40,12 @@ div {
     width: 100%;
   }
   &.toolbar {
-    display: flex;
-    width: 95%;
-    flex-direction: row-reverse;
+    text-align: right;
+    padding-right: 5%;
     input {
       border: 2px solid $titleColor;
       background: $background;
       margin-top: 30px;
-      //margin-right: 30px;
       &::placeholder {
         color: $titleColor;
 
@@ -57,15 +55,15 @@ div {
   }
   &.post-list {
     display: flex;
+    align-items: flex-start;
     flex-flow: row wrap;
-    width: 100%;
 
     article {
       box-sizing: border-box;
       max-width: 45%;
-      border: 15px solid $imgBackground;
+      border: 15px solid transparent;
       background-color: $imgBackground;
-      margin: 20px;
+      margin: 25px;
       img {
         width: 100%;
       }
@@ -83,10 +81,11 @@ div {
 }
 
 section {
-  width: 95%;
   margin: auto;
 
   &.about {
+    text-align: right;
+    padding-right: 5%;
     div {
       h1 {
         color: $titleColor;
@@ -94,7 +93,7 @@ section {
         margin-left: 88%;
       }
       p {
-        width: 98%;
+        padding-left: 2%;
         text-align: justify;
       }
     }
@@ -108,24 +107,22 @@ section {
     display: block;
   }
   &.contact-form {
+    text-align: right;
+    padding-right: 5%;
 
     h1 {
       color: $titleColor;
-
-      margin-left: 82%;
       margin-bottom: 0;
 
     }
     h4 {
       color: $titleColor;
 
-      margin-left: 58%;
       font-variant: all-petite-caps;
       margin-top: 0;
     }
     form {
       textarea {
-        //border: 2px solid $borderColor;
         width: 96%;
         padding: 1%;
         height: 7em;
@@ -136,7 +133,6 @@ section {
       }
       input {
         padding: 1%;
-        //border: 2px solid $borderColor;
         &[type=text] {
           width: 96%;
           margin-bottom: 1%;
