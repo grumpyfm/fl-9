@@ -1,0 +1,242 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+header {
+  background: url('../img/apples.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 1fr;
+  nav {
+    grid-column: 1/-1;
+    padding: 30px 30px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    div.nav{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    a {
+      color: #FFF;
+      text-decoration: none;
+      text-align: right;
+      flex-grow: 0.1;
+      &.navLeft {
+        font-variant: all-petite-caps;
+        padding-left: 1%;
+        text-align: left;
+        flex-grow: 3;
+      }
+    }
+  }
+  h1 {
+    font-variant: all-petite-caps;
+    font-weight: normal;
+    text-align: center;
+    margin: 200px 0 0 0;
+    color: #FFF;
+    span.title {
+      font-size: 60px;
+
+    }
+  }
+  p {
+    text-align: center;
+    color: #FFF;
+  }
+  span.button {
+    text-align: center;
+    margin: 10%;
+    button {
+      padding: 15px 70px;
+      color: #FFF;
+      border: 2px solid #FFF;
+      background-color: rgba(52, 54, 56, 0.8);
+      &:hover {
+        background-color: #b7c8d9;
+      }
+    }
+  }
+}
+
+.someText {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  p {
+    padding: 40px 40px;
+  }
+}
+
+main {
+  display: grid;
+  background-color: #f3f3f3;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+
+  .inMain {
+    margin: 100px 0 50px 0;
+    font-weight: normal;
+    text-align: center;
+    grid-column: 1/-1;
+  }
+  div {
+    position: relative;
+
+    &.forSpanL {
+      grid-column: 1/3;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 5px 30px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      span {
+        background-color: rgba(52, 54, 56, 0.5);
+        position: absolute;
+        padding: 2px 6px;
+        top: 25px;
+        border: 2px solid #FFF;
+        color: #FFF;
+        right: 50px;
+      }
+      p {
+        position: absolute;
+        bottom: 10px;
+        color: #FFF;
+      }
+    }
+    &.forSpanR {
+      grid-column: 2/4;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 5px 30px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      span {
+        background-color: rgba(52, 54, 56, 0.5);
+        position: absolute;
+        padding: 2px 6px;
+        top: 25px;
+        border: 2px solid #FFF;
+        color: #FFF;
+        right: 50px;
+      }
+      p {
+        position: absolute;
+
+        bottom: 10px;
+        color: #FFF;
+      }
+    }
+  }
+
+  p {
+    align-self: center;
+    text-align: center;
+    padding: 5px 30px;
+  }
+
+  div.form {
+    padding: 40px 10px;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    background-color: #FFF;
+    margin: 30px;
+    h3 {
+      font-weight: normal;
+      padding: 5px;
+    }
+    form {
+      input {
+        padding: 2%;
+        background-color: #f3f3f3;
+        border: 1px solid #343638;
+        &[type=email] {
+          width: 70%;
+          &::placeholder {
+            color: #343638;
+          }
+        }
+        &[type=submit] {
+          width: 20%;
+          background-color: #343638;
+          color: #FFF;
+          &:hover {
+            background-color: #b7c8d9;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5%;
+  padding: 100px 30px 0 30px;
+  div {
+    span {
+      color: #f3f3f3;
+    }
+    p {
+      color: #9E9E9E;
+      &.italic {
+        font-style: italic;
+      }
+      &.contact {
+        line-height: 23px;
+      }
+    }
+    text-align: justify;
+    &.last {
+      margin-top: 100px;
+      padding: 1%;
+      border-top: 2px solid #f3f3f3;
+      grid-column: 1/-1;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        a {
+          color: #343638;
+          text-decoration: none;
+        }
+      }
+
+      span {
+        color: #9E9E9E;
+      }
+    }
+    input {
+      padding: 2%;
+      border: 1px solid #343638;
+      background-color: #f3f3f3;
+      &[type=email] {
+        width: 50%;
+        &::placeholder {
+          color: #343638;
+        }
+      }
+      &[type=submit] {
+        background-color: #343638;
+        color: #FFF;
+        &:hover {
+          background-color: #b7c8d9;
+        }
+      }
+    }
+  }
+}
