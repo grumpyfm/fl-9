@@ -1,4 +1,5 @@
 body {
+  font-family: 'Open Sans';
   display: grid;
   grid-template-columns: 1fr; }
 
@@ -29,6 +30,7 @@ header {
         flex-grow: 3; }
   header h1 {
     font-variant: all-petite-caps;
+    letter-spacing: 0.2em;
     font-weight: normal;
     text-align: center;
     margin: 200px 0 0 0;
