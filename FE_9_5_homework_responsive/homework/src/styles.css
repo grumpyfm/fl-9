@@ -1,0 +1,164 @@
+body {
+    background-color: #0a1223;
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+h1 {
+    color: white;
+    font-size: 4.5em;
+    text-align: center;
+}
+
+h1 span {
+    font-style: italic;
+}
+
+button {
+    display: none;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #5ebcff;
+    border: none;
+    position: fixed;
+    right: 1em;
+    bottom: 1em;
+    box-shadow: 5px 8px 15px 0 rgba(0, 0, 0, 0.2);
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-align: center;
+    margin-top: 2%;
+}
+
+a {
+    color: #5d5d5d;
+    text-decoration: none;
+    margin: 2%;
+}
+
+.active {
+    color: #54597d;
+}
+
+a:hover {
+    color: #54597d;
+}
+
+a:focus {
+    color: #54597d;
+}
+
+main {
+    display: grid;
+    padding: 10%;
+    grid-template-columns: 1fr;
+}
+
+p {
+    color: #5d5d5d;
+}
+
+h3 {
+    font-size: 2.5em;
+}
+
+@media only screen and (min-width: 576px) {
+    main article h3 {
+        background-image: -webkit-gradient(linear, 20% 10%, 57% 100%, from(#ddd), to(#5d5d5d));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.image {
+    text-align: center;
+}
+
+img {
+    text-align: center;
+    width: 100%;
+}
+
+@media only screen and (min-width: 901px) {
+    header {
+        text-align: right;
+    }
+
+    .box {
+        align-items: flex-start;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .box .text {
+        align-self: center;
+        box-sizing: border-box;
+        width: 50%;
+    }
+
+    .box .image {
+        width: 50%;
+    }
+
+    .reverse {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+    }
+
+    .reverse .text {
+        align-self: center;
+        box-sizing: border-box;
+        width: 50%;
+    }
+
+    .reverse .image {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    body {
+        background: #fff;
+    }
+
+    h1 {
+        color: #000 !important;
+    }
+
+    p, h3 {
+        color: #484747 !important;
+    }
+
+    button {
+        display: block;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    a {
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .active {
+        color: #54597d;
+        font-weight: bold;
+    }
+
+    a:focus {
+        color: #54597d;
+    }
+}
