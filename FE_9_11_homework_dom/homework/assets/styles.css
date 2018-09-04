@@ -1,0 +1,73 @@
+#root {
+    width: 80%;
+    margin: auto;
+    border: 1px solid;
+}
+
+.container {
+    cursor: move;
+    border-top: 2px solid;
+    margin: 3%;
+    text-align: center;
+
+}
+.container.dragElem {
+    opacity: 0.4;
+}
+.container.over {
+    border: 2px dashed #000;
+    border-top: 2px solid blue;
+}
+
+.form {
+    width: 87%;
+}
+
+.form input {
+    border: 1px solid;
+    margin-left: 6em;
+    width: 91%;
+    padding: 3px;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 10%;
+    box-sizing: border-box;
+    margin: 0 45%;
+}
+
+.delete {
+    width: 30px;
+    margin: 0.5em;
+}
+
+.addBox {
+    padding: 0 1em;
+    text-align: left;
+}
+
+i.done {
+    background-color: white;
+    color: white;
+    border: 1px solid black;
+    width: 30px;
+    margin: 0.5em 0 0.5em 2em;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+}
+
+p {
+    text-align: left
+}
+
+div.input {
+    display: flex;
+
+}
