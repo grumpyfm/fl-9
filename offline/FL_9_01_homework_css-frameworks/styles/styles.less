@@ -1,0 +1,40 @@
+@import "variables.less";
+
+nav {
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+  li {
+    &.active {
+      background-color: @blue !important;
+      a {
+        color: @white !important;
+      }
+    }
+  }
+}
+
+section {
+  margin: 1em 0;
+  .section_title {
+    border-bottom: 1px solid @blue;
+  }
+}
+
+.card {
+  .card-body {
+    padding: 0;
+  }
+  .card-footer {
+    text-align: center !important;
+  }
+}
+
+img {
+  width: 100%;
+}
+
+footer {
+  padding: 0.5em 1em;
+  background-color: @grey;
+  color: @white;
+}
