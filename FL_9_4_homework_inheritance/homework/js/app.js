@@ -89,7 +89,7 @@ const Speedbot = function (obj) {
 Speedbot.prototype = Object.create(Bot.prototype);
 Speedbot.prototype.constructor = Speedbot;
 Speedbot.prototype.prepareEngine = function () {
-    this.speed = this.speed * 2;
+    this.speed = this.speed + 2;
 
 };
 Speedbot.prototype.move = function (direction) {
