@@ -1,0 +1,102 @@
+.loadBlock {
+    height: 20px;
+    width: 150px;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: #2db9be;
+    margin: 50px auto;
+    box-shadow: 0 2px 15px #464746;
+    overflow: hidden;
+    display: none;
+}
+
+form {
+    color: #464746;
+    text-align: center;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid #464746;
+    padding: 3px;
+    margin: 2px;
+}
+
+input[type=button] {
+    width: 178px;
+    background-color: #b5e3e7;
+}
+
+input[type=button]:hover {
+    background-color: #00a4a4;
+}
+
+.loadElement {
+    height: 20px;
+    width: 300px;
+    background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0,
+    rgba(255, 255, 255, 0.9) 5px, transparent 5px, transparent 10px);
+    animation: loading 3s linear infinite;
+}
+
+.landBlock {
+    position: relative;
+    text-align: center;
+    z-index: -2;
+    display: none;
+}
+
+.land {
+    height: 500px;
+    z-index: 0;
+}
+
+.periscopeLand {
+    bottom: 230px;
+    animation: 10s landResult;
+}
+
+.waterBlock {
+    position: relative;
+    z-index: -2;
+    text-align: center;
+    display: none;
+}
+
+.water {
+    height: 500px;
+    z-index: 0;
+}
+
+.periscopeWater {
+    bottom: 127px;
+    animation: 10s waterResult;
+}
+
+.periscope {
+    width: 50px;
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+}
+
+@keyframes loading {
+    from {
+        margin-left: -100px;
+    }
+    to {
+        margin-left: 0;
+    }
+}
+
+@keyframes landResult {
+    50% {
+        bottom: 273px;
+    }
+}
+
+@keyframes waterResult {
+    50% {
+        bottom: 177px;
+    }
+}
