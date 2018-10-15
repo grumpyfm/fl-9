@@ -1,3 +1,4 @@
+
 #container {
     position: relative;
     display: grid;
@@ -29,13 +30,13 @@
 
 .appearDiv {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 2fr 1fr;
     background-color: white;
     width: 935px;
     margin: auto;
 }
 
-#appearImg {
+.appearImage {
     max-height: 600px;
     width: 100%;
     display: block;

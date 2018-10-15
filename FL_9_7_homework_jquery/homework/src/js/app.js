@@ -1,21 +1,19 @@
+var data;
+var prevId;
+var nextId;
+let count = 0;
 $(document).ready(function () {
     let container = document.getElementById('container');
 
     $.getJSON("./data/media.json", function (json) {
+        data = json;
 
-        for (let i = 0; i < 12; i++) {
+        for (; count < 12; count++) {
             let imgDiv = $('<div class="imgDiv"></div>');
             let img = $('<img/>', {
-                id: json.media[i].id,
+                id: data.media[count].id,
                 class: 'gallery',
-                src: json.media[i].display_url,
-                'data-userImage': json.profile_pic_url,
-                'data-username': json.username,
-                'data-likes': json.media[i].edge_liked_by.count,
-                'data-caption': json.media[i].edge_media_to_caption,
-                'data-comment': json.media[i].edge_media_to_comment.count,
-                'data-location': json.media[i].location,
-
+                src: data.media[count].display_url,
             });
             let hoverDiv = $('<div class="hoverDiv"></div>', {});
             imgDiv.appendTo(container);
@@ -25,64 +23,81 @@ $(document).ready(function () {
     });
 });
 
+
 $('div').on('click', '.gallery', function () {
     let id = $(this).attr("id");
     console.log(id);
-    let appearBg = $('<div class="appearBg" onclick="closeImage()"></div>');
-    let appearDiv = $('<div class="appearDiv" onclick="closeImage()"></div>');
-    let appearInfo = $('<div class="appearInfo" onclick="closeImage()"></div>');
     popUp(id);
-    function popUp(imgid) {
-        $.getJSON("./data/media.json", function (json) {
-            let prev = $('<span class="prev"></span>');
-            // $('.prev').on('click',function () {
-            //     console.log('qwertyuiop');
-            //     // imgid=imgid-1;
-            //     // popUp(imgid);
-            // });
-            let next = $('<span class="next"></span>');
-            // next.click(function (imgid) {
-            //     imgid=imgid+1;
-            //     popUp(imgid);
-            // });
-            for (let i = 0; i < 21; i++) {
-                console.log('hj');
-                if (imgid === json.media[i].id) {
-                    console.log('o');
-                    let appearImg = $('<img/>', {
-                        id: json.media[i].id,
-                        src: json.media[i].display_url,
-                        alt: 'appearImage'
-                    });
-                    let userInfo = $('<div class="userInfo"></div>');
-                    let userpar = $('<p></p>', {
-                        text: json.username,
-                    });
-                    let imgInfo = $('<p></p>', {
-                        text: json.media[i].edge_media_to_caption,
-                    });
-                    // let userImage = $('<img/>', {
-                    //     class: userImage,
-                    //     src: json.profile_pic_url,
-                    // });
-                    $('#container').append(appearBg);
-                    $(appearBg).append(appearDiv);
-                    $(appearBg).append(prev);
-                    $(appearBg).append(next);
-                    $(appearDiv).append(appearImg);
-                    $(appearDiv).append(appearInfo);
-                    $(userInfo).append(userpar, imgInfo);
-                    $(appearInfo).append(userInfo);
-                }
-            }
-        })
-    }
-
 });
-$('.appearBg').on('click', '.prev',function () {
-    console.log('qwertyuiop');
-    // imgid=imgid-1;
-    // popUp(imgid);
+
+function popUp(imgid) {
+    let appearBg = $('<div class="appearBg" onclick="closeImage()"></div>');
+    let appearDiv = $('<div class="appearDiv"></div>');
+    let appearInfo = $('<div class="appearInfo" ></div>');
+    let prev = $('<span class="prev"></span>');
+    let next = $('<span class="next"></span>');
+
+    for (let i = 0; i < 21; i++) {
+        if (imgid === data.media[i].id) {
+            console.log('o');
+            let appearImg = $('<img/>', {
+                class: 'appearImage',
+                id: data.media[i].id,
+                src: data.media[i].display_url,
+                alt: 'appearImage'
+            });
+            let userInfo = $('<div class="userInfo"></div>');
+            let userpar = $('<p></p>', {
+                text: data.username,
+            });
+            let imgInfo = $('<p></p>', {
+                text: data.media[i].edge_media_to_caption,
+            });
+            // let userImage = $('<img/>', {
+            //     class: userImage,
+            //     src: data.profile_pic_url,
+            // });
+            $('#container').append(appearBg);
+            $(appearBg).append(appearDiv);
+            $(appearBg).append(prev);
+            $(appearBg).append(next);
+            $(appearDiv).append(appearImg);
+            $(appearDiv).append(appearInfo);
+            $(userInfo).append(userpar, imgInfo);
+            $(appearInfo).append(userInfo);
+            $('.appearBg .appearDiv').on('click', function (e) {
+                e.stopPropagation();
+            });
+            prevId = data.media[i - 1].id;
+            nextId = data.media[i + 1].id;
+            $('.appearBg .prev').on('click', function (e) {
+                closeImage();
+                popUp(prevId);
+                e.stopPropagation();
+            });
+            $('.appearBg .next').on('click', function (e) {
+                closeImage();
+                popUp(nextId);
+                e.stopPropagation();
+            });
+        }
+    }
+}
+
+$('#viewMore').on('click', function () {
+    let till = count + 6;
+    for (count; count < till && count < data.media.length; count++) {
+        let imgDiv = $('<div class="imgDiv"></div>');
+        let img = $('<img/>', {
+            id: data.media[count].id,
+            class: 'gallery',
+            src: data.media[count].display_url,
+        });
+        let hoverDiv = $('<div class="hoverDiv"></div>', {});
+        imgDiv.appendTo(container);
+        hoverDiv.appendTo(imgDiv);
+        img.appendTo(imgDiv);
+    }
 });
 // $('div').on('click', '.gallery', function () {
 //     let prev = $('<span class="prev"></span>');
@@ -129,6 +144,4 @@ $('.appearBg').on('click', '.prev',function () {
 
 function closeImage() {
     $('.appearBg').remove();
-    $('.appearImg').remove();
-    $('.appearDiv').remove();
 }
