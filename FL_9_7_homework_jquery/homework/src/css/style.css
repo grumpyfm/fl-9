@@ -1,0 +1,76 @@
+#container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 28px;
+    grid-column-gap: 28px;
+    padding: 0 225px;
+    z-index: 2;
+}
+
+.gallery {
+    height: 125%;
+}
+
+.imgDiv {
+    width: 293px;
+    height: 293px;
+    overflow: hidden;
+    position: relative;
+}
+
+.appearBg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(113, 111, 111, 0.5);
+    position: fixed;
+    z-index: 10;
+}
+
+.appearDiv {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    background-color: white;
+    width: 935px;
+    margin: auto;
+}
+
+#appearImg {
+    max-height: 600px;
+    width: 100%;
+    display: block;
+    z-index: 15;
+
+}
+.hoverDiv {
+    background-color: rgba(113, 111, 111, 0.5);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+display: none;
+}
+.isHover{
+    visibility: visible;
+}
+.prev{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: 120px;
+    z-index: 50;
+    background-color: red;
+    background:url(../img/icons.png) no-repeat; background-position:-37px -26px;
+}
+.next{
+    position: absolute;
+    z-index: 50;
+    top: 50%;
+    right: 120px;
+    height: 40px;
+    width: 40px;
+    background:url(../img/icons.png) no-repeat; background-position:20px -26px;
+
+}
+/*background:url(../img/spritesheet.png) no-repeat; background-position: -5px -5px}*/
