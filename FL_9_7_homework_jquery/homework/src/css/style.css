@@ -125,6 +125,7 @@
 }
 
 .appearInfo {
+    padding: 17px;
     position: relative;
 }
 
@@ -132,18 +133,33 @@
     grid-column-start: 1;
     grid-column-end: 3;
     margin: 19px 21px;
-    border-top: 1px solid;
+    border-top: 1px solid #abad9c;
     padding-top: 18px;
 }
 
 .likeBlock {
-    margin: 19px 21px;
     position: absolute;
     bottom: 10px;
 }
 
 .commentInput {
     border: none;
-    padding-top: 25px;
-    border-top: 1px solid;
+    padding: 15px;
+    border-top: 1px solid #abad9c;
+}
+#viewMore{
+    font-weight: bold;
+    color: #408fb6;
+    background-color: white;
+    margin: 20px;
+    position: relative;
+    left: 50%;
+    border: none;
+    bottom: 0;
+}
+.bold{
+    font-weight: bold;
+}
+.userpar span{
+    color: #408fb6;
 }
