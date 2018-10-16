@@ -13,7 +13,7 @@ $(document).ready(function () {
 
 $('div').on('click', '.hoverDiv', function () {
     let id = $(this).next().attr("id");
-    $(this).css({display:'none'});
+    $(this).css({display: 'none'});
     popUp(id);
 });
 
@@ -40,11 +40,12 @@ function addImages(countImgToShow) {
 }
 
 function popUp(imgid) {
-    let appearBg = $('<div class="appearBg" onclick="closeImage()"></div>');
+    let appearBg = $('<div class="appearBg"></div>');
     let appearDiv = $('<div class="appearDiv"></div>');
     let appearInfo = $('<div class="appearInfo" ></div>');
     let prev = $('<span class="prev"></span>');
     let next = $('<span class="next"></span>');
+    let cross = $('<div class="cross"><span class="crossL"></span><span class="crossR"></span></div>');
 
     for (var i = 0; i <= 21; i++) {
         if (imgid === data.media[i].id) {
@@ -55,18 +56,25 @@ function popUp(imgid) {
                 alt: 'appearImage'
             });
             let userInfo = $('<div class="userInfo"></div>');
-            let userpar = $('<p class="userpar bold">'+data.username+' •</p>');
+            let userpar = $('<p class="userpar bold">' + data.username + ' •</p>');
             let follow = $('<span> Follow<span/>');
-            let imgInfo = $('<p class="imgInfo"><span class="bold">'+data.username+' </span>'+data.media[i].edge_media_to_caption+'</p>');
-
-                // $('imgInfo').each(function(i) {
-                //
-                //     var iTotalWords = $(this).text().split(' ').length;
-                //     console.log(iTotalWords);
-                //     // $(this).append("<b> " + iTotalWords + " words </b>");
-                //
-                // });
-
+            if (data.media[i].location.length > 0) {
+                let location = $('<br/><p class="location">' + data.media[i].location + '</p>');
+                location.css({margin: '0'});
+                $(userpar).append(follow);
+                $(userpar).append(location);
+            } else {
+                $(userpar).append(follow);
+            }
+            let imgInfo = $('<p class="imgInfo"><span class="bold">' + data.username + ' </span>' + data.media[i].edge_media_to_caption + '</p>');
+            jQuery.fn.highlight = function (str, className) {
+                var regex = new RegExp(str, "gi");
+                return this.each(function () {
+                    this.innerHTML = this.innerHTML.replace(regex, function (matched) {
+                        return "<span class=\"" + className + "\">" + matched + "</span>";
+                    });
+                });
+            };
             let userImage = $('<img/>', {
                 class: 'userImage',
                 src: data.profile_pic_url,
@@ -76,17 +84,19 @@ function popUp(imgid) {
             $(appearBg).append(appearDiv);
             $(appearBg).append(prev);
             $(appearBg).append(next);
+            $(appearBg).append(cross);
             $(appearDiv).append(appearImg);
             $(appearDiv).append(appearInfo);
             $(userInfo).append(userImage);
-            $(userpar).append(follow);
+
             $(userInfo).append(userpar, imgInfo);
             $(appearInfo).append(userInfo);
             $(appearInfo).append(likeBlock);
             $('.appearBg .appearDiv').on('click', function (e) {
                 e.stopPropagation();
             });
-
+            $(".imgInfo*").highlight(/\#.\S\w*/ig, "highlight");
+            $(".imgInfo*").highlight(/\@.\S\w*/ig, "highlight");
             if (Number(data.media[i].id) === 0) {
                 prevId = data.media[21].id;
                 nextId = data.media[i + 1].id;
@@ -97,6 +107,10 @@ function popUp(imgid) {
                 nextId = data.media[i + 1].id;
                 prevId = data.media[i - 1].id;
             }
+            $('.appearBg .cross').on('click', function (e) {
+                closeImage();
+                e.stopPropagation();
+            });
             $('.appearBg .prev').on('click', function (e) {
                 closeImage();
                 popUp(prevId);
@@ -117,11 +131,17 @@ $('#viewMore').on('click', function () {
     addImages(till);
     console.log(till);
     numb = till;
-    if(numb>= data.media.length){
-        $(this).css({display:'none'})
+    if (numb >= data.media.length) {
+        $(this).css({display: 'none'})
     }
 });
 
 function closeImage() {
     $('.appearBg').remove();
 }
+
+$('body').keyup(function (e) {
+    if (e.key === "Escape") {
+        closeImage()
+    }
+});
