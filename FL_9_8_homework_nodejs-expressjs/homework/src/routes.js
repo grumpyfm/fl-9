@@ -28,7 +28,6 @@ router.get('/:id', function (req, res) {
 });
 
 router.use('/:id', function (req, res, next) {
-    console.log('in Use');
     let result = auth.authChecker(req.headers.authorization);
     if (result) {
         next();
