@@ -1,6 +1,5 @@
 let data = require('../../db/data');
 
-
 function getAllCars(){
     return {status:200,message:data}
 }
