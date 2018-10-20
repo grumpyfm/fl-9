@@ -9,22 +9,22 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/', function (req, res) {
     let result = car.getAllCars();
-    res.status(result.status).send(result.message);
+    res.status(result.status).send(result.body);
 });
 
 router.post('/', function (req, res) {
     let result = car.createCar(req.body.id, req.body.brand, req.body.model, req.body.engineVolume, req.body.year);
-    res.status(result.status).send(result.message);
+    res.status(result.status).send(result.body);
 });
 
 router.put('/:id', function (req, res) {
     let result = car.putCarById(req.params.id, req.body.brand, req.body.model, req.body.engineVolume, req.body.year);
-    res.status(result.status).send(result.message);
+    res.status(result.status).send(result.body);
 });
 
 router.get('/:id', function (req, res) {
     let result = car.getCarById(req.params.id);
-    res.status(result.status).send(result.message);
+    res.status(result.status).send(result.body);
 });
 
 router.use('/:id', function (req, res, next) {
@@ -38,7 +38,7 @@ router.use('/:id', function (req, res, next) {
 });
 router.delete('/:id', function (req, res) {
     let result = car.deleteCarById(req.params.id);
-    res.status(result.status).send(result.message);
+    res.status(result.status).send(result.body);
 });
 
 module.exports = router;

@@ -17,9 +17,9 @@ function createCar(id, brand, model, engineVolume, year) {
     });
     if (!car) {
         data.push(newCar);
-        return {status:200,message:newCar}
+        return {status:201,body:newCar}
     } else {
-        return {status:409,message:'Car already exists.'}
+        return {status:409,body:{message:'Car already exists.'}}
     }
 }
 
@@ -32,9 +32,9 @@ function putCarById(id, brand, model, engineVolume, year) {
         car.model = model;
         car.engineVolume =engineVolume;
         car.year = year;
-        return {status:200,message:car}
+        return {status:200,body:car}
     } else {
-        return {status:404,message:'Car with such id has not been found.'}
+        return {status:404,body:'Car with such id has not been found.'}
     }
 }
 
@@ -44,9 +44,9 @@ function getCarById(id) {
     });
 
     if (car) {
-        return ({status:200,message:car})
+        return ({status:200,body:car})
     } else {
-        return ({status:404,message:'Car with such id has not been found.'})
+        return ({status:404,body:'Car with such id has not been found.'})
     }
 }
 
@@ -58,9 +58,9 @@ function deleteCarById(id) {
         data = data.filter(function (cars) {
             return cars.id !== Number(id);
         });
-        return {status:200,message:'The car has been successfully removed.'}
+        return {status:200,body:{message:'The car has been successfully removed'}}
     } else {
-        return {status:404,message:'Car with such id has not been found.'}
+        return {status:404,body:{message:'Car with such id has not been found.'}}
     }
 }
 
