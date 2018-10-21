@@ -9,6 +9,7 @@ const del = require('del');
 const inject = require('gulp-inject');
 const babel = require('gulp-babel');
 const connect = require('gulp-connect');
+const jshint = require('gulp-jshint');
 
 const runSequence = require('run-sequence');
 
@@ -81,4 +82,9 @@ gulp.task('build', function () {
 
 gulp.task('build-prod', function () {
     runSequence('del', 'copyHtml',['compileCss', 'compileJs'],['compressJs', 'compressCss'],'addCssJsToHtml' );
+});
+
+gulp.task('jshint', function() {
+    return gulp.src('src/js/*.js')
+        .pipe(jshint())
 });
