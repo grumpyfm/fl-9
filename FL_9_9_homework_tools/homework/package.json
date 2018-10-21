@@ -5,9 +5,13 @@
   "main": "./src/app.js",
   "scripts": {
     "start": "gulp default",
-    "compress":"gulp compress",
     "build": "gulp build",
-    "build:prod": "gulp build-prod"
+    "build:prod": "gulp build-prod",
+    "compressJs": "gulp compressJs",
+    "compressCss": "gulp compressCss",
+    "scssToCss": "gulp scssToCss",
+    "copyHtml": "gulp copyHtml",
+    "del":"gulp del"
   },
   "author": "",
   "license": "ISC",
@@ -20,13 +24,13 @@
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": " ^2.6.1",
     "gulp-connect": "^5.6.1",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-scss": "^1.4.0",
     "gulp-uglify": "^3.0.1",
     "gulp-uglifyjs": "^0.6.2",
     "jshint": "^2.9.6",
-    "node-sass": "^4.9.4",
-    "pump": "^3.0.0"
+    "node-sass": "^4.9.4"
   },
   "dependencies": {
     "moment": "^2.21.0"
