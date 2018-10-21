@@ -57,9 +57,9 @@ gulp.task('del', function () {
 gulp.task('addCssJsToHtml', function () {
     let sources = gulp.src(['dist/*.min.js','dist/*.min.css'], {read: false});
 
-    return gulp.src('./src/app.html')
-        .pipe(inject(sources))
-        .pipe(gulp.dest('./src'));
+    return gulp.src('dist/index.html')
+        .pipe(inject(sources, { ignorePath: 'dist/', addRootSlash: false }))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('sass:watch', function () {
@@ -68,7 +68,7 @@ gulp.task('sass:watch', function () {
 
 gulp.task('connect', function() {
     connect.server({
-        root: 'src',
+        root: 'dist',
         port: 8080
     });
 });
@@ -76,9 +76,9 @@ gulp.task('connect', function() {
 gulp.task('default', ['connect']);
 
 gulp.task('build', function () {
-    runSequence('del', ['compileCss', 'compileJs'],['compressJs', 'compressCss'],'addCssJsToHtml');
+    runSequence('del',  'copyHtml',['compileCss', 'compileJs'],['compressJs', 'compressCss'],'addCssJsToHtml');
 });
 
 gulp.task('build-prod', function () {
-    runSequence('del', ['compileCss', 'compileJs'],['compressJs', 'compressCss'],'addCssJsToHtml', 'copyHtml');
+    runSequence('del', 'copyHtml',['compileCss', 'compileJs'],['compressJs', 'compressCss'],'addCssJsToHtml' );
 });
