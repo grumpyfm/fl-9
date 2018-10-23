@@ -41,7 +41,9 @@ gulp.task('compileCss', function () {
 gulp.task('compressCss', function(){
     return gulp.src('dist/css/*.css')
         .pipe(concat('style.min.css'))
+        .pipe(gulpif((!argv.production), sourcemaps.init()))
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(gulpif((!argv.production), sourcemaps.write()))
         .pipe(gulp.dest('dist'));
 });
 
