@@ -25,14 +25,13 @@ const getDiscount = obj => {
         obj.weekendDiscount = 2;
     }
     obj.count();
-    setBonus(obj);
 };
 
 const setBonus = obj => {
     obj.bonus = obj.bonus + Math.floor(obj.toPay / 10);
-
 };
 
 const test = new Store();
 getDiscount(test);
+setBonus(test);
 console.log(test.buyPizzaSlice());
