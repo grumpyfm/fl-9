@@ -18,7 +18,7 @@ class Store {
 
 const getDiscount = obj => {
     let data = new Date();
-    if (data.getHours() <= 13 || data.getHours() === 23) {
+    if (data.getHours() <= 6 || data.getHours() === 23) {
         obj.nightDiscount = 5;
     }
     if (data.getDay() === 0 || data.getDay() === 6) {
