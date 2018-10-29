@@ -1,0 +1,25 @@
+
+.calculatorElements {
+    display: grid;
+    width: 12em;
+    margin: auto;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.calcElement, #NumbInput {
+    border-radius: 7px;
+    border: 2px solid #e0dbdb;
+    width: 100%;
+}
+
+.calcElement:hover {
+    background-color: darkgreen;
+    color: white;
+}
+
+#resultButton, #NumbInput {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    width: 100%;
+}
