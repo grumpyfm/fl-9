@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$turqoise: #26a69a;
+$red: #E57373;
+$gray: #f8f8f8;
+$white: #fff;
+
+$shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+.root {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: $gray;
+}
+th{
+    background-color: $turqoise;
+    color: $white;
+}
+.removeButton{
+    border: none;
+    padding: 8%;
+    background-color: $red;
+    color: $white;
+}
+#loadMoreButton{
+    background-color: $gray;
+    box-shadow: $shadow;
+    width: 27em;
+    border-radius: 8px;
+}
+input{
+    border: none;
+    border-bottom: 2px solid;
+}
