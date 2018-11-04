@@ -7,19 +7,27 @@ let displayInfo = document.getElementById('displayInfo');
 let searchInput = document.getElementById('searchInput');
 let count = 0;
 let employeesTable = document.getElementById('employeesTable');
+let butId;
+let till = 5;
+let nextState = defaultState;
 
 //Reducer
 
 function reducer(currentState, action) {
-
     switch (action.type) {
         case 'ADD':
-            createNewElements(defaultState);
+            if (count < nextState.length) {
+                createNewElements(nextState, count, till);
+                till = till + 5;
+            }
+            count = count + 5;
             break;
         case 'DEL':
+            removeRow(nextState);
+            break;
         case 'FIND':
-            console.log(searchInput.value);
-            console.log(filter(defaultState, searchInput.value));
+            count = 1;
+            till = 5;
             return 'df';
         default:
             return currentState;
@@ -31,7 +39,10 @@ store.subscribe(render);
 
 function render() {
     console.log('in render');
-    displayInfo.innerHTML = `Display ${count} users out of ${defaultState.length}`
+    displayInfo.innerHTML = `Display ${count} users out of ${nextState.length}`
+    if (count === nextState.length) {
+        loadMoreButton.display = 'none';
+    }
 }
 
 //Actions
@@ -45,74 +56,71 @@ searchInput.addEventListener('change', function (e,) {
     store.dispatch({type: 'FIND'})
 });
 
+
 function filter(obj, name) {
-    let res = [];
+
     for (let i = 0; i < obj.length; i++) {
-        if (obj[i].name === name) {
-            res.push(obj[i]);
-        }
-    }
-    return res;
-}
-
-
-function createNewElements(curState) {
-    if (count < curState.length) {
-        let till = count + 5;
-        for (count; count < till; count++) {
-            let row = document.createElement('tr');
-            employeesTable.appendChild(row);
-
-            let columnPhoto = document.createElement('td');
-            let img = document.createElement('img');
-            img.src = curState[count].picture;
-            columnPhoto.appendChild(img);
-
-            let columnName = document.createElement('td');
-            columnName.innerHTML = curState[count].name;
-
-            let columnAddress = document.createElement('td');
-            columnAddress.innerHTML = curState[count].location;
-
-            let columnEmail = document.createElement('td');
-            columnEmail.innerHTML = curState[count].email;
-
-            let columnPhone = document.createElement('td');
-            columnPhone.innerHTML = curState[count].phone;
-
-            let columnTimezone = document.createElement('td');
-            columnTimezone.innerHTML = curState[count].timezone;
-
-            let columnActions = document.createElement('td');
-            let removeButton = document.createElement('button');
-            removeButton.innerHTML = 'Remove';
-            removeButton.className = 'removeButton';
-            removeButton.addEventListener('click', function () {
-                store.dispatch({type: 'DEL'})
-            });
-            columnActions.appendChild(removeButton);
-
-            row.appendChild(columnPhoto);
-            row.appendChild(columnName);
-            row.appendChild(columnAddress);
-            row.appendChild(columnEmail);
-            row.appendChild(columnPhone);
-            row.appendChild(columnTimezone);
-            row.appendChild(columnActions);
+        if (obj[i].name !== name) {
+            let rotToRemove = document.getElementById(i);
+            rotToRemove.style.display = 'none';
         }
     }
 }
 
+function removeRow(obj) {
+    nextState = obj.filter((item) => item.id !== butId);
+    console.log(nextState);
+    let rotToRemove = document.getElementById(butId);
+    rotToRemove.style.display = 'none';
+    count = count - 1;
+    till = till - 1;
+}
 
-// ** Here you can pass store down to your components
-// ** and initialize them, like in example below
+function createNewElements(curState, count, till) {
 
-// ** import {createStore} from 'redux';
-// ** import myTestReducer from './reducers/my_test_reducer.js';
-// ** import MyTestComponent from './components/my_test_component';
+    for (count; count < till; count++) {
+        let row = document.createElement('tr');
+        row.id = curState[count].id;
+        employeesTable.appendChild(row);
 
-// ** const store = createStore(myTestReducer);
+        let columnPhoto = document.createElement('td');
+        let img = document.createElement('img');
+        img.src = curState[count].picture;
+        columnPhoto.appendChild(img);
 
-// ** const testComponent = new MyTestComponent(store);
+        let columnName = document.createElement('td');
+        columnName.innerHTML = curState[count].name;
 
-// ** testComponent.init()
+        let columnAddress = document.createElement('td');
+        columnAddress.innerHTML = curState[count].location;
+
+        let columnEmail = document.createElement('td');
+        columnEmail.innerHTML = curState[count].email;
+
+        let columnPhone = document.createElement('td');
+        columnPhone.innerHTML = curState[count].phone;
+
+        let columnTimezone = document.createElement('td');
+        columnTimezone.innerHTML = curState[count].timezone;
+
+        let columnActions = document.createElement('td');
+        let removeButton = document.createElement('button');
+        removeButton.innerHTML = 'Remove';
+        removeButton.id = curState[count].id;
+        removeButton.className = 'removeButton';
+        removeButton.addEventListener('click', function () {
+            butId = removeButton.id;
+            store.dispatch({type: 'DEL'})
+        });
+        columnActions.appendChild(removeButton);
+
+        row.appendChild(columnPhoto);
+        row.appendChild(columnName);
+        row.appendChild(columnAddress);
+        row.appendChild(columnEmail);
+        row.appendChild(columnPhone);
+        row.appendChild(columnTimezone);
+        row.appendChild(columnActions);
+    }
+}
+
