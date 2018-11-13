@@ -1,0 +1,15 @@
+#modalWindow input, button{
+    border-radius: 5px;
+    width: 100%;
+}
+
+#modalWindow{
+    margin-top: 3em;
+}
+
+button{
+    background-color: darkseagreen;
+}
+button:hover{
+    background-color: beige;
+}

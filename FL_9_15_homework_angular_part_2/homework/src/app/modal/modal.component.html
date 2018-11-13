@@ -1,0 +1,22 @@
+<div id="modalWindow">
+    <form #scheduleForm="ngForm" (ngSubmit)="onSubmit(scheduleForm)">
+        <input name="topic"
+               ngModel
+               #topic="ngModel"
+               type="text"
+               placeholder="Topic"><br>
+        <input name='date'
+               ngModel
+               #date="ngModel"
+               type="date"
+               placeholder="Date"><br>
+        <input name="lecturer"
+               ngModel
+               #lecturer="ngModel"
+               type="text"
+               placeholder="Lecturer"><br>
+    </form>
+
+    <button type="submit" (click)="onSubmit(scheduleForm)">Add to the list</button>
+    <button type="button" onclick="closeModal()">Close window</button>
+</div>
