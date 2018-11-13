@@ -1,0 +1,24 @@
+<div>
+    <div class="ScheduleTable">
+        <button class="openModal" (click)="openModal()">Add new lesson</button>
+        <table class="ScheduleTable">
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col}}
+                </th>
+            </tr>
+            <tr *ngFor="let lecture of listOfLectures">
+                <td>{{lecture.id}}</td>
+                <td>{{lecture.topic}}</td>
+                <td>{{lecture.date}}</td>
+                <td>{{lecture.lecturer}}</td>
+                <td>
+                    <button>Edit</button>
+                    <button>Remove</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <app-modal></app-modal>
+</div>
